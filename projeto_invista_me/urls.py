@@ -26,5 +26,6 @@ urlpatterns = [
     path('minha_historia/', views.minha_historia, name='minha_historia'),
     path('admin/', admin.site.urls),
     path('novo_investimento/', views.criar, name='novo_investimento'),
-    path('novo_investimento/<int:id_investimento>',views.editar,name='editar')
+    path('novo_investimento/<int:id_investimento>',views.editar,name='editar'),
+    path('confirmar_exclusao/<int:id_investimento>',views.excluir,name='excluir')
 ]

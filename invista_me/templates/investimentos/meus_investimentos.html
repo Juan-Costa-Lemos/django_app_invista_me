@@ -18,6 +18,7 @@
         <td>{{dado.valor}}</td>
         <td><button><a href="{% url 'detalhe' dado.id %}">Detalhe</a></button></td>
         <td><button><a href="{% url 'editar' dado.id %}">Editar</a></button></td>
+        <td><button><a href="{% url 'excluir' dado.id %}">Deletar</a></button></td>
     </tr>
     {% endfor%}
 </table>
