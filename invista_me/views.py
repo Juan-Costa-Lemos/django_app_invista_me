@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from django.shortcuts import HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import Investimento
+from .forms import InvestimentoForm
 
 # Create your views here.
 
@@ -18,9 +18,9 @@ def minha_historia(request):
     }
     return render(request, 'investimentos/minha_historia.html',pessoa)
 
-def novo_investimento(request):
+# def novo_investimento(request):
 
-    return render(request,'investimentos/novo_investimento.html')
+#     return render(request,'investimentos/novo_investimento.html')
 
 # def investimento_registrado(request):
 #     investimento ={
@@ -39,3 +39,15 @@ def detalhe(request, id_investimento):
         'dados': Investimento.objects.get(pk=id_investimento)
     }
     return render(request,'investimentos/detalhe.html',dados)
+
+def criar(request):
+    if request.method =='POST':
+        investimento_form = InvestimentoForm(request.POST)
+        if investimento_form.is_valid():
+            investimento_form.save()
+        return redirect('meus_investimentos')
+    investimento_form = InvestimentoForm()
+    formulario = {
+        'formulario': investimento_form
+    }
+    return render(request, 'investimentos/novo_investimento.html',context=formulario)
