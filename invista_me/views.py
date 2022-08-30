@@ -1,6 +1,7 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import Investimento
 from .forms import InvestimentoForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -18,15 +19,6 @@ def minha_historia(request):
     }
     return render(request, 'investimentos/minha_historia.html',pessoa)
 
-# def novo_investimento(request):
-
-#     return render(request,'investimentos/novo_investimento.html')
-
-# def investimento_registrado(request):
-#     investimento ={
-#         'tipo_investimento': request.POST.get('TipoInvestimento')
-#     }
-#     return render(request,'investimentos/investimento_registrado.html',investimento)
 
 def meus_investimentos(request):
     dados = {
